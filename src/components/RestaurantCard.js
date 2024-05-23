@@ -1,22 +1,28 @@
+import {CLOUD_IMG_URL} from '../utils/constants'
+import { Link } from 'react-router-dom'
+
 
 const RestaurantCard = ({ resData }) => {
-    const { resName, quizeen , rating } = resData
-    console.log(resData);
+    const { name, cuisines , avgRating , costForTwo, cloudinaryImageId, sla , id   } = resData?.info
     return (
-        <div className="res-card">
+        <Link to={`restaurants/${id}`} className="res-card">
+            <img src={`${CLOUD_IMG_URL}${cloudinaryImageId}`} alt="" />
             <h3>
-                {resName}
+                {name}
             </h3>
             <h4>
-                {quizeen}
+                {cuisines?.join(',')}
             </h4>
             <h4>
-                {rating} stars
+                {avgRating} stars
             </h4>
             <h4>
-                38 minutes
+                {costForTwo}
             </h4>
-        </div>
+            <h4>
+                {sla?.slaString}
+            </h4>
+        </Link>
     )
 }
 
