@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react"
 import { API_BASE_URL } from '../utils/constants'
 import RestaurantCard from "./RestaurantCard"
+import { useOnlineStatus } from '../utils/useOnlineStatus'
 
 const Body = () => {
     // Local State Variable - Super power
     const [restaurantsData, setListOfRestaurants] = useState()
     const [filteredRestaurants, setFilteredRestaurants] = useState([])
     const [search, setSearch] = useState('')
+
+    const onlineStatus = useOnlineStatus()
+    console.log("body OnlineSta", onlineStatus);
 
     useEffect(() => {
         fetchData()
@@ -37,6 +41,8 @@ const Body = () => {
         setFilteredRestaurants(filteredData)
         console.log('filteredData', restaurantsData, data)
     }
+
+    if(!onlineStatus) return <h1>Looks like you are offline plz check your internet connection</h1>
 
 
     return (

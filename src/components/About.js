@@ -1,14 +1,36 @@
-import User from "./User"
 import UserClass from "./UserClass"
+import { Component } from "react"
 
-export const About = () => {
-    return (
-        <div className="About">
-            <h1>About Page</h1>
-            <User />
-            <UserClass name={"Akshay Saini (Class Base)"} />
-        </div>
-    )
+class About extends Component {
+    constructor(props) {
+        super(props)
+    }
+    componentDidMount(){
+    }
+    render() {
+        return (
+            <div className="About">
+                <h1>About Page</h1>
+                <UserClass name={"Fisrt"} />
+            </div>
+        )
+    }
 }
+
+/*
+- Parent Constructor
+- Parent Render
+  - Render Phase
+  - First Constructor
+  - First Render
+  - Second Constructor
+  - Second Render
+
+  <Dom Update - In Single Batch>
+  - Commit Phase
+  - First ComponentDidMount
+  - Second ComponentDidMount
+
+*/
 
 export default About
